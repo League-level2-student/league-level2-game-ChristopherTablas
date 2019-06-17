@@ -22,7 +22,7 @@ public class Game {
 		Frame.add(Panel);
 		Frame.setVisible(true);
 		Frame.getContentPane().setPreferredSize(new Dimension(width, height));
-		
+		Frame.addKeyListener(Panel);
         Frame.pack();
         Panel.startGame();
         

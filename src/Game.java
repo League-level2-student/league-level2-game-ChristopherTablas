@@ -1,30 +1,28 @@
-import java.awt.Dimension;
-
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
-public class Game {
-	JFrame Frame;
-	final int width = 500;
-	final int height = 800;
-	GamePanel Panel;
-	public static void main(String[] args) {
-		Game game = new Game();
-		game.setup();
-	}
-	Game(){
-		Frame = new JFrame();
-		Frame.setSize(width, height);
-		Panel = new GamePanel();
-	}
+public class Game {	
+	JFrame frame;
+	GamePanel gpan;
+	public static final int width = 800;
+	public static final int height = 500;
+public static void main(String[] args) {
+	Game game = new Game();
+	game.setup();
 	
+}
+	Game(){
+		frame = new JFrame();
+		frame.setSize(width,height);
+gpan = new GamePanel();
+	}
 	void setup(){
-		Frame.add(Panel);
-		Frame.setVisible(true);
-		Frame.getContentPane().setPreferredSize(new Dimension(width, height));
-		Frame.addKeyListener(Panel);
-        Frame.pack();
-        Panel.startGame();
-        
+		frame.add(gpan);
+		frame.addKeyListener(gpan);
+		frame.setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+	private void setDefaultCloseOperation(int exitOnClose) {
+		// TODO Auto-generated method stub
+		
 	}
 }

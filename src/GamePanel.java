@@ -17,6 +17,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	Font titlefont;
 	Font littlefont;
 	Timer frameDraw;
+	Player steve = new Player(50,250,50,50);
 	GamePanel(){
 	frameDraw = new Timer(1000/60,this);
 	frameDraw.start();
@@ -59,6 +60,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	void drawGameState(Graphics g) {  
 		g.setColor(Color.green);
 		g.fillRect(0, 0,Game.width, Game.height);
+		steve.draw(g);
 	}
 	void drawEndState(Graphics g)  {  
 		g.setColor(Color.RED);
@@ -94,22 +96,23 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
     }
 }
 	if (arg0.getKeyCode()==KeyEvent.VK_UP) {
-		System.out.println("UP");
+		steve.up();
 }   	
 	if (arg0.getKeyCode()==KeyEvent.VK_DOWN) {
-		System.out.println("DOWN");
+		steve.down();
 }   	
 	if (arg0.getKeyCode()==KeyEvent.VK_LEFT) {
-		System.out.println("LEFT");
+		steve.left();
 }   
 	if (arg0.getKeyCode()==KeyEvent.VK_RIGHT) {
-	    System.out.println("RIGHT");
-	}   
+	    steve.right();
+	    	}   
 		// TODO Auto-generated method stub
 		
 	}
 	@Override
 	public void keyReleased(KeyEvent arg0) {
+		
 		// TODO Auto-generated method stub
 		
 	}

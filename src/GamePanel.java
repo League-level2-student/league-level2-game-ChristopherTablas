@@ -18,11 +18,13 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	Font littlefont;
 	Timer frameDraw;
 	Player steve = new Player(50,250,50,50);
+	ObjectManager objman = new ObjectManager(steve);
 	GamePanel(){
 	frameDraw = new Timer(1000/60,this);
 	frameDraw.start();
 	 titlefont = new Font("Arial", Font.PLAIN, 48);
 	 littlefont = new Font("Arial", Font.PLAIN, 24);
+	 
 
 }
 	@Override
@@ -40,6 +42,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	}
 
 	void updateGameState(){
+		objman.update();
+		steve.update();
 		
 	}
 
@@ -60,7 +64,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	void drawGameState(Graphics g) {  
 		g.setColor(Color.green);
 		g.fillRect(0, 0,Game.width, Game.height);
-		steve.draw(g);
+		objman.draw(g);
 	}
 	void drawEndState(Graphics g)  {  
 		g.setColor(Color.RED);
@@ -96,23 +100,34 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
     }
 }
 	if (arg0.getKeyCode()==KeyEvent.VK_UP) {
-		steve.up();
+		steve.up = true;
 }   	
 	if (arg0.getKeyCode()==KeyEvent.VK_DOWN) {
-		steve.down();
+		steve.down = true;
 }   	
 	if (arg0.getKeyCode()==KeyEvent.VK_LEFT) {
-		steve.left();
+		steve.left = true;
 }   
 	if (arg0.getKeyCode()==KeyEvent.VK_RIGHT) {
-	    steve.right();
+	    steve.right = true;
 	    	}   
 		// TODO Auto-generated method stub
 		
 	}
 	@Override
 	public void keyReleased(KeyEvent arg0) {
-		
+		if (arg0.getKeyCode()==KeyEvent.VK_UP) {
+			steve.up = false;
+	}   
+		if (arg0.getKeyCode()==KeyEvent.VK_DOWN) {
+		steve.down = false;
+	}   	
+		if (arg0.getKeyCode()==KeyEvent.VK_LEFT) {
+			steve.left = false;
+	}
+		if (arg0.getKeyCode()==KeyEvent.VK_RIGHT) {
+			steve.right = false;
+	}   	
 		// TODO Auto-generated method stub
 		
 	}

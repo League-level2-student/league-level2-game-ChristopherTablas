@@ -2,7 +2,11 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 public class Player extends GameObject{
-	
+
+boolean up = false;
+boolean down = false;
+boolean left =false;
+boolean right = false;
 Player(int x, int y, int width, int height){
 	super(x,y,width,height); 
 
@@ -13,30 +17,21 @@ void draw(Graphics g){
 
 
 }
-public void right(){
-	x+=speed;
-	if(x>740){
+void update(){
+	if(up == true){
+		y-=speed;
+	}
+	if(down == true){
+		y+=speed;
+	}
+	if(left == true){
 		x-=speed;
 	}
-}
-public void left(){
-	x-=speed;
-	if(x<0){
+	if(right == true){
 		x+=speed;
 	}
+
 }
-public void up(){
-	y-=speed;
-	if(y<0){
-		y=y+speed;
-	}
-}
-public void down(){
-	y+=speed;
-	if(y>425){
-		y= y - speed;
-	}	
-	}
 
 }
 

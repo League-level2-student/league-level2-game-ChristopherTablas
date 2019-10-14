@@ -3,7 +3,7 @@ import javax.swing.JFrame;
 public class Game {	
 	JFrame frame;
 	GamePanel gpan;
-	public static final int width = 800;
+	public  final static int width = 800;
 	public static final int height = 500;
 public static void main(String[] args) {
 	Game game = new Game();
@@ -12,6 +12,7 @@ public static void main(String[] args) {
 }
 	Game(){
 		frame = new JFrame();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(width,height);
 gpan = new GamePanel();
 	}

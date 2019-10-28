@@ -11,7 +11,7 @@ public static boolean gotImage = false;
 Arrows(int x, int y, int width, int height){
 	super(x,y,width,height);
 	if (needImage) {
-    loadImage ("arrow.png");
+    loadImage ("arroww.png");
 }
 }
 void update(){

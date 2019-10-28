@@ -24,13 +24,15 @@ public static boolean needImage = true;
 public static boolean gotImage = false;	
 	Player steve = new Player(50,250,50,50);
 	ObjectManager objman = new ObjectManager(steve);
+	Timer zombieSpawn;
 	GamePanel(){
 	frameDraw = new Timer(1000/60,this);
 	frameDraw.start();
 	 titlefont = new Font("Arial", Font.PLAIN, 48);
 	 littlefont = new Font("Arial", Font.PLAIN, 24);
+	 
 	 if (needImage) {
-    loadImage ("Grass.png");
+    loadImage ("Grasss.png");
 }
 
 }
@@ -71,6 +73,7 @@ public static boolean gotImage = false;
 	void drawGameState(Graphics g) { 
 		if (gotImage) {
 	g.drawImage(image, 0, 0, Game.width, Game.height, null);
+	objman.draw(g);
 } else {
 	g.setColor(Color.green);
 	g.fillRect(0, 0, Game.width, Game.height);
@@ -104,11 +107,18 @@ public static boolean gotImage = false;
 	}
 	@Override
 	public void keyPressed(KeyEvent arg0) {
+		if(arg0.getKeyCode()==KeyEvent.VK_SPACE){
+			objman.addProjectile(steve.getProjectile());
+		}
 		if (arg0.getKeyCode()==KeyEvent.VK_ENTER) {
     if (currentState == END) {
         currentState = MENU;
+        
     } else {
         currentState++;
+    }
+    if(currentState == GAME){
+    	startGame();
     }
 }
 	if (arg0.getKeyCode()==KeyEvent.VK_UP) {
@@ -159,7 +169,10 @@ public static boolean gotImage = false;
 	        needImage = false;
 	    }
 	}
-	
+	public void startGame(){
+		zombieSpawn = new Timer(1000 , objman);
+    zombieSpawn.start();
+	}
 	
 	
 	

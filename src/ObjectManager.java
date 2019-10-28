@@ -1,20 +1,23 @@
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class ObjectManager {
+public class ObjectManager implements ActionListener{
 Player alex;
 ArrayList<Arrows> ar = new ArrayList<Arrows>();
 ArrayList<Zombies> zom = new ArrayList<Zombies>();
 
 ObjectManager(Player alex){
 	this.alex = alex;
+	addZombies(new Zombies(500,new Random().nextInt(Game.height),80,80));
 }
 void addProjectile(Arrows proj){
 	ar.add(proj);
 }
 void addZombies(Zombies zomb){
-	zom.add(new Zombies(new Random().nextInt(Game.width),0,50,50));
+	zom.add(zomb);
 }
 void update(){
 	for (int i = 0; i < zom.size(); i++) {
@@ -45,5 +48,10 @@ void purgeObjects(){
 			ar.remove(i);
 		}
 	}
+}
+@Override
+public void actionPerformed(ActionEvent e) {
+	// TODO Auto-generated method stub
+	
 }
 }

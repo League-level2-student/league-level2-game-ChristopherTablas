@@ -22,7 +22,7 @@ Player(int x, int y, int width, int height){
 }
 void draw(Graphics g){
 	if (gotImage) {
-		g.drawImage(image, x, y, width, height, null);
+		g.drawImage(image, x, y, 100, 100, null);
 	} else {
 		g.setColor(Color.BLUE);
 		g.fillRect(x, y, width, height);
@@ -56,6 +56,9 @@ void loadImage(String imageFile) {
         needImage = false;
     }
 }
+public Arrows getProjectile() {
+        return new Arrows(x+width/2, y, 40, 40);
+} 
 
 }
 

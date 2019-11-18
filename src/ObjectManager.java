@@ -8,24 +8,28 @@ public class ObjectManager implements ActionListener{
 Player alex;
 ArrayList<Arrows> ar = new ArrayList<Arrows>();
 ArrayList<Zombies> zom = new ArrayList<Zombies>();
-
+Random random = new Random();
 ObjectManager(Player alex){
 	this.alex = alex;
-	addZombies(new Zombies(500,new Random().nextInt(Game.height),80,80));
-}
+	
+
+	}
 void addProjectile(Arrows proj){
 	ar.add(proj);
 }
 void addZombies(Zombies zomb){
-	zom.add(zomb);
+zom.add(zomb);
 }
 void update(){
+	checkCollision();
+	purgeObjects();
 	for (int i = 0; i < zom.size(); i++) {
 		zom.get(i).update();
 	}
 	for (int j = 0; j < ar.size();j++) {
 		ar.get(j).update();
 	}
+	
 }
 void draw(Graphics g){
 	alex.draw(g);
@@ -49,8 +53,28 @@ void purgeObjects(){
 		}
 	}
 }
+	void checkCollision(){
+		for(Zombies z : zom){
+			if(alex.collisionBox.intersects(z.collisionBox)){
+				alex.isActive = false;
+				z.isActive = false;
+				
+			}
+		}
+
+		for(int z = 0; z > zom.size(); z++){
+			for(int i = 0; i > ar.size();i++){
+				if(zom.get(z).collisionBox.intersects(ar.get(i).collisionBox)){
+					ar.get(i).isActive = false;
+					zom.get(z).isActive = false;
+				}
+			}
+		}
+			
+	 }
 @Override
 public void actionPerformed(ActionEvent e) {
+	addZombies(new Zombies(750,new Random().nextInt(Game.height),80,80));
 	// TODO Auto-generated method stub
 	
 }

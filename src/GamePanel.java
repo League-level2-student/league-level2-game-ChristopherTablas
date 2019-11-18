@@ -53,7 +53,9 @@ public static boolean gotImage = false;
 	void updateGameState(){
 		objman.update();
 		steve.update();
-		
+		if(steve.isActive = false){
+			currentState = END;
+		}
 	}
 
 	void updateEndState(){
@@ -93,7 +95,6 @@ public static boolean gotImage = false;
 	}
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		System.out.println("action");
 		repaint();
 		if(currentState == MENU){
     updateMenuState();

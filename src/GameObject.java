@@ -17,6 +17,6 @@ boolean isActive = true;
 	
 	}
 	void update(){
-		
+		collisionBox.setBounds(x,y,width,height);
 	}
 }

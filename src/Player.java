@@ -31,6 +31,7 @@ void draw(Graphics g){
 
 }
 void update(){
+	super.update();
 	if(up == true){
 		y-=speed;
 	}
@@ -42,6 +43,18 @@ void update(){
 	}
 	if(right == true){
 		x+=speed;
+	}
+	if(x<-35){
+		x= x+8;
+	}
+	if(x>775){
+		x= x-8;
+	}
+	if(y<0){
+		y = y+8;
+	}
+	if(y>475){
+		y = y-8;
 	}
 
 }

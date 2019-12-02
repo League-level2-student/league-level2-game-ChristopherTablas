@@ -3,8 +3,8 @@ import javax.swing.JFrame;
 public class Game {	
 	JFrame frame;
 	GamePanel gpan;
-	public  final static int width = 800;
-	public static final int height = 500;
+	public  final static int width = 850;
+	public static final int height = 600;
 public static void main(String[] args) {
 	Game game = new Game();
 	game.setup();

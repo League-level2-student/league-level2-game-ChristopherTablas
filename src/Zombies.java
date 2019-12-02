@@ -15,8 +15,9 @@ Zombies(int x, int y, int width, int height){
 	}
 }
 void update(){
-	x-=speed;
 	super.update();
+	x-=speed;
+	
 	}
 void draw(Graphics g){
 	if (gotImage) {

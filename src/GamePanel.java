@@ -53,9 +53,12 @@ public static boolean gotImage = false;
 	void updateGameState(){
 		objman.update();
 		steve.update();
-		if(steve.isActive = false){
+		objman.checkCollision();
+		objman.purgeObjects();
+		
+		if(objman.alex.isActive == false){
 			currentState = END;
-		}
+		}		
 	}
 
 	void updateEndState(){
@@ -90,7 +93,7 @@ public static boolean gotImage = false;
 		g.setColor(Color.YELLOW);
 		g.drawString("GAME OVER", 280, 50);
 		g.setFont(littlefont);
-		g.drawString("You killed Zombies", 320, 180);
+		g.drawString("You killed " + objman.score + " Zombies", 320, 180);
 		g.drawString("Press ENTER to restart", 305, 350);
 	}
 	@Override
@@ -114,7 +117,8 @@ public static boolean gotImage = false;
 		if (arg0.getKeyCode()==KeyEvent.VK_ENTER) {
     if (currentState == END) {
         currentState = MENU;
-        
+        steve = new Player(50,250, 50,50);
+        objman = new ObjectManager(steve);
     } else {
         currentState++;
     }

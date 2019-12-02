@@ -9,6 +9,7 @@ Player alex;
 ArrayList<Arrows> ar = new ArrayList<Arrows>();
 ArrayList<Zombies> zom = new ArrayList<Zombies>();
 Random random = new Random();
+int score = 0;
 ObjectManager(Player alex){
 	this.alex = alex;
 	
@@ -23,6 +24,7 @@ zom.add(zomb);
 void update(){
 	checkCollision();
 	purgeObjects();
+	getscore();
 	for (int i = 0; i < zom.size(); i++) {
 		zom.get(i).update();
 	}
@@ -61,17 +63,31 @@ void purgeObjects(){
 				
 			}
 		}
-
-		for(int z = 0; z > zom.size(); z++){
-			for(int i = 0; i > ar.size();i++){
-				if(zom.get(z).collisionBox.intersects(ar.get(i).collisionBox)){
-					ar.get(i).isActive = false;
-					zom.get(z).isActive = false;
+		
+		for(Zombies z : zom){
+			for(Arrows a: ar){
+				if(z.collisionBox.intersects(a.collisionBox)){
+					a.isActive = false;
+					z.isActive = false;
+					score ++;
 				}
 			}
 		}
+		
 			
 	 }
+	 int getscore(){
+		return score;
+
+	/*	for(Zombies z : zom){
+			for(Arrows a: ar){
+				if(z.collisionBox.intersects(a.collisionBox)){
+				score = score + 1;
+				}
+			}
+		} */
+
+	}
 @Override
 public void actionPerformed(ActionEvent e) {
 	addZombies(new Zombies(750,new Random().nextInt(Game.height),80,80));

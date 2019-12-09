@@ -26,7 +26,7 @@ void draw(Graphics g){
 		g.drawImage(image, x, y, width, height, null);
 	} else {
 		g.setColor(Color.yellow);
-		g.fillRect(x, y, width, height);
+		g.fillRect(x+30, y, 35, 83);
 	}
 	
 }

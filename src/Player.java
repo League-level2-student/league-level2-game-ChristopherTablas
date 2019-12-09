@@ -18,6 +18,7 @@ Player(int x, int y, int width, int height){
 	if (needImage) {
 	    loadImage ("steve.png");
 	}
+	
 
 }
 void draw(Graphics g){
@@ -32,6 +33,7 @@ void draw(Graphics g){
 }
 void update(){
 	super.update();
+	collisionBox.setBounds(x+30,y,40,85);
 	if(up == true){
 		y-=speed;
 	}

@@ -78,14 +78,7 @@ void purgeObjects(){
 	 }
 	 int getscore(){
 		return score;
-
-	/*	for(Zombies z : zom){
-			for(Arrows a: ar){
-				if(z.collisionBox.intersects(a.collisionBox)){
-				score = score + 1;
-				}
-			}
-		} */
+	
 
 	}
 @Override

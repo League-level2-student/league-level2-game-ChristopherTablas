@@ -8,6 +8,7 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -113,7 +114,11 @@ public static boolean gotImage = false;
 	public void keyPressed(KeyEvent arg0) {
 		if(arg0.getKeyCode()==KeyEvent.VK_SPACE){
 			objman.addProjectile(steve.getProjectile());
+			if(currentState == MENU){
+				JOptionPane.showMessageDialog(null, "use the arrow keys to move, space to fire, kill the zombies to survive!");
+			}
 		}
+		
 		if (arg0.getKeyCode()==KeyEvent.VK_ENTER) {
     if (currentState == END) {
         currentState = MENU;

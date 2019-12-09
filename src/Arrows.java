@@ -16,6 +16,7 @@ Arrows(int x, int y, int width, int height){
 }
 void update(){
 	super.update();
+	collisionBox.setBounds(x+10,y+10,40,26);
 	x+=speed;
 }
 void draw(Graphics g){
@@ -25,6 +26,7 @@ void draw(Graphics g){
 	g.setColor(Color.red);
 	g.fillRect(x, y, width, height);
 }
+	
 }
 void loadImage(String imageFile) {
     if (needImage) {

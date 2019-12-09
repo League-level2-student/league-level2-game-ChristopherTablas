@@ -13,9 +13,11 @@ Zombies(int x, int y, int width, int height){
 	if (needImage) {
 	    loadImage ("Zombie.png");
 	}
+	
 }
 void update(){
 	super.update();
+	collisionBox.setBounds(x+30,y,35,83);
 	x-=speed;
 	
 	}
@@ -26,6 +28,7 @@ void draw(Graphics g){
 		g.setColor(Color.yellow);
 		g.fillRect(x, y, width, height);
 	}
+	
 }
 void loadImage(String imageFile) {
     if (needImage) {

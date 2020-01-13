@@ -29,7 +29,6 @@ void draw(Graphics g){
 		g.fillRect(x+30, y, 40, 85);
 	}
 
-
 }
 void update(){
 	super.update();
